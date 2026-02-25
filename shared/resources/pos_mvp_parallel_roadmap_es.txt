@@ -1,0 +1,88 @@
+Guía para crear tu POS desde cero (MVP) y cómo compartirme tu HTML
+
+Respuesta corta: sí, podemos hacerlo desde cero en paralelo sin romper lo que ya tienes.
+
+Cómo pasarme tu HTML (elige 1 opción)
+1) Pegar aquí el contenido de tu index.html (si es corto).
+2) Subir tu proyecto a GitHub y compartirme:
+   - URL del repositorio.
+   - Rama donde estás trabajando.
+   - Rutas clave (por ejemplo: /index.html, /js/app.js, /css/styles.css).
+3) Comprimir tu proyecto en .zip y copiar aquí los archivos principales en bloques.
+
+Si usas GitHub, idealmente compárteme también:
+- Capturas del error de facturación.
+- Pasos exactos para reproducir el error.
+- Si guardas datos en localStorage, Firebase o API.
+
+Plan recomendado (desde cero, proyecto paralelo)
+Fase 0 - Preparación (medio día)
+- Crear nuevo repo: pos-mvp.
+- Mantener tu app actual como “legacy” (solo fixes urgentes).
+- Definir alcance MVP: facturar, gastos, deudas, notas, historial y dashboard.
+
+Fase 1 - Base técnica (1-2 días)
+- Frontend: React + Vite (rápido para crecer).
+- Backend: FastAPI (Python).
+- Base de datos: PostgreSQL (Supabase free).
+- Despliegue: Vercel (frontend) + Render (backend).
+
+Fase 2 - Facturación confiable (2-3 días)
+- Crear venta (sales).
+- Guardar detalle (sale_items).
+- Registrar pago (payments).
+- Descontar inventario (inventory_movements).
+- Registrar caja (cash_movements).
+
+Regla clave: todo en una sola transacción.
+
+Fase 3 - Finanzas operativas (2 días)
+- Registrar gastos (expenses).
+- Registrar deudas (debts) y abonos (debt_payments).
+- Bloc de notas (notes) para compras y pendientes.
+
+Fase 4 - Historial y gráficos (2 días)
+- Ventas por día/semana/mes.
+- Flujo neto diario (ventas - gastos).
+- Cuentas por cobrar y por pagar.
+- Top productos y ticket promedio.
+
+Modelo mínimo de tablas
+- users
+- stores
+- products
+- sales
+- sale_items
+- payments
+- expenses
+- debts
+- debt_payments
+- notes
+- inventory_movements
+- cash_movements
+- audit_logs
+
+Endpoints mínimos (FastAPI)
+- POST /auth/login
+- GET/POST /products
+- POST /sales (transaccional)
+- POST /expenses
+- POST /debts
+- POST /debts/{id}/payments
+- GET /reports/daily-cashflow
+- GET /reports/sales-history
+
+Qué te voy a entregar cuando me pases tu HTML
+1) Diagnóstico de tu estructura actual (sin romper lo que funciona).
+2) Plan de migración archivo por archivo.
+3) Primer módulo implementado: facturación transaccional + historial.
+4) Guía de deploy barato (Vercel + Render + Supabase).
+
+Formato ideal para enviarme archivos en el chat
+- Archivo: index.html
+- Archivo: js/app.js
+- Archivo: js/facturacion.js
+- Error observado: “mensaje exacto”.
+- Pasos para reproducir: 1, 2, 3...
+
+Con eso te ayudo de inmediato a construir el MVP funcional y escalable a SaaS.
